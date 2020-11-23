@@ -109,6 +109,10 @@
               <template scope="scope">
                 <el-select v-model="scope.row.extractor" placeholder="请选择">
                   <el-option
+                    label="jemspath"
+                    value="jemspath"
+                  />
+                  <el-option
                     label="delimiter"
                     value="delimiter"
                   />
@@ -399,6 +403,10 @@ export default {
       activeName: 'first',
       activeResponseTab: 'responseBody',
       selectors: [{
+        label: 'jemspath',
+        value: 'jemspath'
+      },
+      {
         label: '分隔符',
         value: 'delimiter'
       },
