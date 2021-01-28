@@ -170,7 +170,7 @@ export default {
           team: this.team,
           project: this.project,
           type: 'interface',
-          cases: this.suite.map(x => x.caseId),
+          cases: this.suite,
           name: value
         }
         this.$axios
@@ -252,7 +252,8 @@ export default {
       this.suite.push({
         index: this.suite.length + 1,
         caseId: row.id,
-        name: row.name
+        name: row.name,
+        data: row
       })
     },
     handleUp (index, row) {

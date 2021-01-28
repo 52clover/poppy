@@ -15,11 +15,11 @@
       <el-menu-item index="/interface/create">
         创建接口
       </el-menu-item>
-      <el-menu-item index="/interface/suite">
-        创建套件
-      </el-menu-item>
       <el-menu-item index="/interface/">
         接口列表
+      </el-menu-item>
+      <el-menu-item index="/suite/">
+        套件列表
       </el-menu-item>
     </el-submenu>
     <el-submenu index="3">
