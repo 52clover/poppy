@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row v-for="(suites, index) in data" :key="index" :gutter="20" class="row">
+    <el-row v-for="(suites, index) in suites" :key="index" :gutter="20" class="row">
       <el-col :md="6" :lg="6" :xl="4" v-for="suite in suites" :key="suite.id">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -83,12 +83,12 @@
 export default {
   data () {
     return {
+      total: 0,
       page: 0,
       limit: 24,
       dataPerRow: 6,
-      total: 0,
-      data: [],
       suite: {},
+      suites: [],
       report: '',
       variables: '',
       visible: false
@@ -138,14 +138,14 @@ export default {
         .post('/api/v1/suite/search', params)
         .then((res) => {
           if (res.data.status === 0) {
-            this.data = []
+            this.suites = []
             this.total = res.data.total
             const len = res.data.data.length
             const number = window.screen.width < 1920 ? 4 : 6
             const line = len % number === 0 ? len / number : Math.floor((len / number) + 1)
             for (let i = 0; i < line; i++) {
               const temp = res.data.data.slice(i * number, i * number + number)
-              this.data.push(temp)
+              this.suites.push(temp)
             }
           } else {
             this.$message({

@@ -61,8 +61,8 @@ export default {
     credentials: true,
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
+      'Accept': 'application/json'
+    }
   },
   /*
   ** Build configuration

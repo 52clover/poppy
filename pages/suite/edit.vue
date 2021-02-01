@@ -118,7 +118,7 @@
               <!-- <el-input v-model="name" v-if="visible" size="mini" placeholder="请填写套件名称" /> -->
             </el-col>
             <el-col :span="6">
-              <el-button @click="create" v-if="visible" size="mini" type="primary" icon="el-icon-plus">创建套件</el-button>
+              <el-button @click="update" v-if="visible" size="mini" type="primary" icon="el-icon-plus">更新套件</el-button>
             </el-col>
           </el-row>
         </div>
@@ -151,66 +151,53 @@ export default {
   },
   computed: {
     visible () {
+      console.log('here!')
+      console.log(this.suite)
+      console.log(this.suite.cases)
       return this.suite.cases.length !== 0
     }
   },
   mounted () {
-    this.refresh()
+    this.search()
+    this.load()
   },
   methods: {
     selectedTeamProject (value) {
       this.team = value.team
       this.project = value.project
-      this.refresh()
+      this.search()
     },
-    create () {
-      this.$prompt('请输入套件名称', '创建套件', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消'
-      }).then(({ value }) => {
-        const params = {
-          team: this.team,
-          project: this.project,
-          type: 'interface',
-          cases: this.suite.cases,
-          name: value
-        }
-        this.$axios
-          .post('/api/v1/suite/create', params)
-          .then((res) => {
-            if (res.data.status === 0) {
-              this.$message({
-                type: 'info',
-                message: res.data.message,
-                center: true
-              })
-              this.$router.push({
-                path: '/suite/'
-              })
-            } else {
-              this.$message({
-                type: 'error',
-                message: res.data.message,
-                center: true
-              })
-            }
-          }).catch(() => {
+    update () {
+      this.$axios
+        .post('/api/v1/suite/update', {
+          id: this.suite.id,
+          name: this.suite.name,
+          team: this.suite.team,
+          project: this.suite.project,
+          cases: this.suite.cases
+        })
+        .then((res) => {
+          if (res.data.status === 0) {
+            this.suite = res.data.data
+          } else {
             this.$message({
               type: 'error',
-              message: '服务出错，请联系管理员',
+              message: res.data.message,
               center: true
             })
-            this.loading = false
-          })
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '取消创建套件！',
-          center: true
+          }
+          this.loading = false
         })
-      })
+        .catch((error) => {
+          this.$message({
+            type: 'error',
+            message: error.response.data.message,
+            center: true
+          })
+          this.loading = false
+        })
     },
-    refresh () {
+    search () {
       this.loading = true
       const params = {
         limit: this.limit,
@@ -246,9 +233,33 @@ export default {
           this.loading = false
         })
     },
+    load () {
+      this.$axios
+        .post('/api/v1/suite/search', { id: this.$route.query.id })
+        .then((res) => {
+          if (res.data.status === 0) {
+            this.suite = res.data.data
+          } else {
+            this.$message({
+              type: 'error',
+              message: res.data.message,
+              center: true
+            })
+          }
+          this.loading = false
+        })
+        .catch((error) => {
+          this.$message({
+            type: 'error',
+            message: error.response.data.message,
+            center: true
+          })
+          this.loading = false
+        })
+    },
     handleCurrentChange (value) {
       this.page = value - 1
-      this.refresh()
+      this.search()
     },
     handleAdd (index, row) {
       this.suite.cases.push({
