@@ -3,6 +3,7 @@
     v-model="owner"
     @change="selectOwner"
     placeholder="请选择负责人"
+    size="small"
     clearable
   >
     <el-option

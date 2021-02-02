@@ -1,6 +1,6 @@
 <template>
   <div class="block">
-    <el-row :gutter="20">
+    <el-row :gutter="20" class="page-header">
       <el-col :span="3">
         <TeamSelector
           ref="teamSelector"
@@ -14,7 +14,12 @@
         />
       </el-col>
       <el-col :span="3" :offset="15">
-        <el-button @click="handleAdd" icon="el-icon-plus" type="primary">
+        <el-button
+          @click="handleAdd"
+          icon="el-icon-plus"
+          type="primary"
+          size="small"
+        >
           创建项目
         </el-button>
       </el-col>
@@ -355,5 +360,11 @@ export default {
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.page-header {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
 }
 </style>

@@ -3,6 +3,7 @@
     v-model="team"
     @change="selectTeam"
     placeholder="请选择团队"
+    size="small"
     clearable
   >
     <el-option

@@ -1,6 +1,6 @@
 <template>
   <div class="block">
-    <el-row :gutter="20">
+    <el-row :gutter="20" class="page-header">
       <el-col :span="3">
         <TeamSelector v-on:selectedTeam="selectedTeam" />
       </el-col>
@@ -15,6 +15,7 @@
           @click="handleAdd"
           icon="el-icon-plus"
           type="primary"
+          size="small"
         >
           创建变量
         </el-button>
@@ -469,5 +470,11 @@ export default {
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.page-header {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
 }
 </style>

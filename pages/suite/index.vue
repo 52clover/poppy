@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div style="margin-bottom: 20px;">
+    <div class="page-header">
       <div style="display: inline">
         <TeamProjectCascader v-on:selectedTeamProject="selectedTeamProject" />
       </div>
       <div style="display: inline">
-        <el-input v-model="caseName" size="small" placeholder="请输入内容" class="input-with-select">
+        <el-input v-model="caseName" size="small" placeholder="请输入套件名" class="input-with-select">
           <el-button @click="search" slot="append" size="small" icon="el-icon-search" />
         </el-input>
       </div>
@@ -66,5 +66,11 @@ export default {
 <style scoped>
 .el-input {
   width: 300px;
+}
+
+.page-header {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
 }
 </style>
