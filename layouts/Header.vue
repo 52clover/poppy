@@ -12,9 +12,6 @@
       <template slot="title">
         接口测试
       </template>
-      <el-menu-item index="/interface/create">
-        创建接口
-      </el-menu-item>
       <el-menu-item index="/interface/">
         接口列表
       </el-menu-item>
@@ -44,9 +41,6 @@
     </el-submenu>
     <el-menu-item index="/report">
       查看报告
-    </el-menu-item>
-    <el-menu-item index="/dashboard">
-      数据看板
     </el-menu-item>
     <el-menu-item v-if="join" index="keep">
       <a href="https://github.com/52clover" target="_blank">
