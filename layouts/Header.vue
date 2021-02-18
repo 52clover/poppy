@@ -1,53 +1,55 @@
 <template>
-  <el-menu
-    @select="handleSelect"
-    :default-active="$route.path"
-    class="el-menu-demo"
-    mode="horizontal"
-  >
-    <el-menu-item index="/">
-      平台首页
-    </el-menu-item>
-    <el-submenu index="2">
-      <template slot="title">
-        接口测试
-      </template>
-      <el-menu-item index="/interface/">
-        接口列表
+  <div class="header">
+    <el-menu
+      @select="handleSelect"
+      :default-active="$route.path"
+      class="el-menu-demo"
+      mode="horizontal"
+    >
+      <el-menu-item index="/">
+        平台首页
       </el-menu-item>
-      <el-menu-item index="/suite/">
-        套件列表
+      <el-submenu index="2">
+        <template slot="title">
+          接口测试
+        </template>
+        <el-menu-item index="/interface/">
+          接口列表
+        </el-menu-item>
+        <el-menu-item index="/suite/">
+          套件列表
+        </el-menu-item>
+      </el-submenu>
+      <el-submenu index="3">
+        <template slot="title">
+          配置管理
+        </template>
+        <el-menu-item index="/config/project">
+          项目配置
+        </el-menu-item>
+        <el-menu-item index="/config/variable">
+          变量配置
+        </el-menu-item>
+        <el-menu-item v-if="keyword" index="/keyword">
+          关键字配置
+        </el-menu-item>
+        <el-menu-item index="/config/plugin">
+          插件配置
+        </el-menu-item>
+        <el-menu-item v-if="task" index="/config/task">
+          定时任务
+        </el-menu-item>
+      </el-submenu>
+      <el-menu-item index="/report">
+        查看报告
       </el-menu-item>
-    </el-submenu>
-    <el-submenu index="3">
-      <template slot="title">
-        配置管理
-      </template>
-      <el-menu-item index="/config/project">
-        项目配置
+      <el-menu-item v-if="join" index="keep">
+        <a href="https://github.com/52clover" target="_blank">
+          加入我们
+        </a>
       </el-menu-item>
-      <el-menu-item index="/config/variable">
-        变量配置
-      </el-menu-item>
-      <el-menu-item v-if="keyword" index="/keyword">
-        关键字配置
-      </el-menu-item>
-      <el-menu-item index="/config/plugin">
-        插件配置
-      </el-menu-item>
-      <el-menu-item v-if="task" index="/config/task">
-        定时任务
-      </el-menu-item>
-    </el-submenu>
-    <el-menu-item index="/report">
-      查看报告
-    </el-menu-item>
-    <el-menu-item v-if="join" index="keep">
-      <a href="https://github.com/52clover" target="_blank">
-        加入我们
-      </a>
-    </el-menu-item>
-  </el-menu>
+    </el-menu>
+  </div>
 </template>
 
 <script>
@@ -92,3 +94,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.header {
+  margin-left: -36px;
+  margin-right: -36px;
+}
+
+.el-menu-demo {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+</style>
