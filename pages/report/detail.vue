@@ -259,7 +259,13 @@ export default {
               hc5: this.skip,
               hc6: this.percent
             })
-            if (this.passed !== this.total) {
+            console.log('total', this.total)
+            console.log('success', this.success)
+            console.log('failed', this.failed)
+            console.log('error', this.error)
+            console.log('skip', this.skip)
+            console.log('percent', this.percent)
+            if (this.success !== this.total) {
               this.$message({
                 type: 'error',
                 message: '测试报告中检测到断言失败或错误，请关注！',
