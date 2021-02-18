@@ -1,26 +1,24 @@
 <template>
-  <div class="block">
-    <el-row :gutter="20" class="page-header">
-      <el-col :span="3">
+  <div>
+    <div class="page-header">
+      <div style="display: inline">
         <TeamSelector v-on:selectedTeam="selectedTeam" />
-      </el-col>
-      <el-col :span="3">
+      </div>
+      <div style="display: inline">
         <OwnerSelector v-on:selectedOwner="selectedOwner" />
-      </el-col>
-      <el-col
-        :span="3"
-        :offset="15"
-      >
+      </div>
+      <div style="float: right; padding: 3px 0; display: block;">
         <el-button
           @click="handleAdd"
           icon="el-icon-plus"
           type="primary"
           size="small"
+          plain
         >
           创建变量
         </el-button>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
     <el-table
       :data="data"
       v-loading="loading"
