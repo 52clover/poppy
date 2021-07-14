@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-container>
-      <el-header>
+      <el-header class="fixed">
         <Header />
       </el-header>
-      <el-main>
+      <el-main class="content">
         <nuxt />
       </el-main>
       <el-footer>
@@ -37,7 +37,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  background-color: #f0f2f5;
 }
 
 *,
@@ -74,5 +73,17 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.fixed{
+  width: 100%;
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+  box-shadow: 0px 3px 5px #e0e0e0;
+}
+
+.content {
+  background: #F0F2F5
 }
 </style>

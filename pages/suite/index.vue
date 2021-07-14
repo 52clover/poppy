@@ -71,6 +71,5 @@ export default {
 .page-header {
   padding: 20px;
   margin-bottom: 20px;
-  background-color: #fff;
 }
 </style>

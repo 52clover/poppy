@@ -1,10 +1,15 @@
 <template>
   <div>
-    <el-row>
-      <el-col :span="4">
+    <div class="page-header">
+      <div style="display: inline">
         <TeamProjectCascader v-on:selectedTeamProject="selectedTeamProject" />
-      </el-col>
-    </el-row>
+      </div>
+      <div style="display: inline">
+        <el-input v-model="name" size="small" placeholder="请输入报告名" class="input-with-select">
+          <el-button @click="refresh" slot="append" size="small" icon="el-icon-search" />
+        </el-input>
+      </div>
+    </div>
     <el-table
       :data="data"
       v-loading="loading"
@@ -123,6 +128,7 @@ export default {
       limit: 10,
       page: 0,
       total: 0,
+      name: '',
       team: '',
       project: '',
       loading: true
@@ -143,6 +149,9 @@ export default {
       }
       if (this.project !== '') {
         params.project = this.project
+      }
+      if (this.name !== '') {
+        params.name = this.name
       }
       this.$axios
         .post('/api/v1/report/search', params)
@@ -242,3 +251,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.el-input {
+  width: 300px;
+}
+
+.page-header {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+</style>

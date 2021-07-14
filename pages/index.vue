@@ -1,25 +1,13 @@
 <template>
   <div class="container">
-    <IndexCarousel />
-    <IndexBanner />
-    <IndexInformation />
-    <IndexModule />
+    首页
   </div>
 </template>
 
 <script>
-import IndexCarousel from '~/components/IndexCarousel.vue'
-import IndexBanner from '~/components/IndexBanner.vue'
-import IndexInformation from '~/components/IndexInformation.vue'
-import IndexModule from '~/components/IndexModule.vue'
 
 export default {
-  components: {
-    IndexCarousel,
-    IndexBanner,
-    IndexInformation,
-    IndexModule
-  }
+
 }
 </script>
 

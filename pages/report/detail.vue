@@ -143,7 +143,7 @@
         >
           <template slot-scope="scope">
             <el-tag
-              :type="scope.row.status <= 1.0 ? 'success' : 'danger'"
+              :type="scope.row.elapsed <= scope.row.threshold ? 'success' : 'danger'"
               disable-transitions
             >
               {{ scope.row.performance + '%' }}
@@ -259,7 +259,7 @@ export default {
               hc5: this.skip,
               hc6: this.percent
             })
-            if (this.passed !== this.total) {
+            if ((this.success + this.skip) !== this.total) {
               this.$message({
                 type: 'error',
                 message: '测试报告中检测到断言失败或错误，请关注！',
